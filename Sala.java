@@ -24,6 +24,10 @@ public class Sala{
         }
     }
 
+    public Sessao[] getSessoes(){
+        return this.sessoes;
+    }
+
     public int getNumeroSala(){
         return this.numeroSala;
     }
