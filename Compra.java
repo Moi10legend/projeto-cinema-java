@@ -1,4 +1,4 @@
-// import java.util.ArrayList;
+import java.util.ArrayList;
 // import java.util.List;
 import java.util.Scanner;
 
@@ -40,15 +40,25 @@ public class Compra {
 
     public void compraDeBilhetes(Sala[] salas, String nomeFilme, int qtdDeBilhetes){
         boolean possuiSessao = false;
+        ArrayList<Sessao> sessoesQuePossuemOFilme = new ArrayList<>();
         for(int i = 0; i < salas.length; i++){
             for(int j = 0; j<salas[i].getSessoes().length; i++){
-                if(salas[i].getSessoes()[j].getFilme().getNome() == nomeFilme){
-                    System.out.println();
+                Sessao sessaoAtual = salas[i].getSessoes()[j];
+                if(sessaoAtual.getFilme().getNome() == nomeFilme){
+                    sessoesQuePossuemOFilme.add(salas[i].getSessoes()[j]);
+                    possuiSessao = true;
                 }
             }
         }
+        System.out.println("Sessões disponíveis para o filme " + nomeFilme + ":");
+        for(int i = 0; i < sessoesQuePossuemOFilme.size(); i++){
+            System.out.println(i + ": Sala: " + sessoesQuePossuemOFilme.get(i).getNumeroSala() + " Horário: " + sessoesQuePossuemOFilme.get(i).getHorario());
+        }
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da sessão que deseja comprar os bilhetes:");
+        int sessaoEscolhida = scanner.nextInt();
 
+        
 
     }
 }

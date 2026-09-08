@@ -2,10 +2,12 @@ public class Sessao {
     private Filme filme;
     private String horario;
     private Cadeira[][] cadeiras = new Cadeira[10][15];
+    private int numeroSala;
 
-    public Sessao(Filme filme, String horario){
+    public Sessao(Filme filme, String horario, int numeroSala){
         this.filme = filme;
         this.horario = horario;
+        this.numeroSala = numeroSala;
         inicializarCadeiras();
     }
 
@@ -34,5 +36,13 @@ public class Sessao {
 
     public void setHorario(String horario){
         this.horario = horario;
+    }
+
+    public int getNumeroSala(){
+        return this.numeroSala;
+    }
+
+    public void setNumeroSala(int numeroSala){
+        this.numeroSala = numeroSala;
     }
 }
