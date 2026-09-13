@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class Compra {
     private Usuario cliente;
-    private String[] itensLanchonete;
-    private double[] valoresItensLanchonete;
-    private Bilhete[] bilhetes;
+    private ArrayList<ItemLanchonete> itensLanchonete = new ArrayList<ItemLanchonete>();
+    private Bilhete[] bilhetes = new Bilhete[9];
     
     public Compra(Usuario cliente, String[] itensLanchonete, double[] valoresItensLanchonete){
         this.cliente = cliente;
@@ -26,8 +25,8 @@ public class Compra {
         return this.itensLanchonete;
     }
 
-    public void setItensLanchonete(String[] itensLanchonete){
-        this.itensLanchonete = itensLanchonete;
+    public void adicionarUmItemDaLanchonete(ItemLanchonete item){
+        this.itensLanchonete.add(item);
     }
 
     public double[] getValoresItensLanchonete(){
@@ -42,13 +41,17 @@ public class Compra {
         boolean possuiSessao = false;
         ArrayList<Sessao> sessoesQuePossuemOFilme = new ArrayList<>();
         for(int i = 0; i < salas.length; i++){
-            for(int j = 0; j<salas[i].getSessoes().length; i++){
+            for(int j = 0; j<salas[i].getSessoes().length; j++){
                 Sessao sessaoAtual = salas[i].getSessoes()[j];
-                if(sessaoAtual.getFilme().getNome() == nomeFilme){
+                if(sessaoAtual.getFilme().getNome().equals(nomeFilme) ){
                     sessoesQuePossuemOFilme.add(salas[i].getSessoes()[j]);
                     possuiSessao = true;
                 }
             }
+        }
+        if (!possuiSessao){
+            System.out.println("O filme requerido não possui sessões.");
+            return;
         }
         System.out.println("Sessões disponíveis para o filme " + nomeFilme + ":");
         for(int i = 0; i < sessoesQuePossuemOFilme.size(); i++){
@@ -58,7 +61,14 @@ public class Compra {
         System.out.println("Digite o número da sessão que deseja comprar os bilhetes:");
         int sessaoEscolhida = scanner.nextInt();
 
-        
+        if(qtdDeBilhetes > 1){
+            Sessao sessao = sessoesQuePossuemOFilme.get(sessaoEscolhida);
+            Cadeira[][] cadeiras = sessao.getCadeiras();
+            int sugestoesEncontradas = 0;
+            int limiteSugestoes = 3; // Mostraremos até 3 opções diferentes para o cliente
+
+            System.out.println("Sugestões de " + qtdDeBilhetes + " cadeiras juntas:");
+        }
 
     }
 }

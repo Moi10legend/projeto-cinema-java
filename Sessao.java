@@ -45,4 +45,8 @@ public class Sessao {
     public void setNumeroSala(int numeroSala){
         this.numeroSala = numeroSala;
     }
+
+    public Cadeira[][] getCadeiras(){
+        return this.cadeiras;
+    }
 }
