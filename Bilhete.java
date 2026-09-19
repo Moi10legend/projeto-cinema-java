@@ -7,13 +7,13 @@ public class Bilhete{
     private double valor;
     private String cadeiraComprada;
 
-    public Bilhete(String userId, String cpf, Sala sala, Sessao sessao, Filme filme, double valor, String cadeiraComprada){
+    public Bilhete(String userId, String cpf, Sala sala, Sessao sessao, Filme filme, String cadeiraComprada){
         this.userId = userId;
         this.cpf = cpf;
         this.sala = sala;
         this.sessao = sessao;
         this.filme = filme;
-        this.valor = this.filme.getValor() + this.filme.getValor();
+        this.valor = this.filme.getValor() + this.sala.getValor();
         this.cadeiraComprada = cadeiraComprada;
     }
 
@@ -38,8 +38,6 @@ public class Bilhete{
     }
 
     public double getValor(){
-        System.out.println("Valor do filme: " + this.filme.getValor());
-        System.out.println("Valor da sala: " + this.sala.getValor());
         return this.valor;
     }
 

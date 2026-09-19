@@ -13,7 +13,7 @@ public class Sessao {
 
     private void inicializarCadeiras(){
         for(int i = 0; i < 10; i++){
-            char letraDaFila = (char) ('A'+i);
+            char letraDaFila = (char) ('J'- i);
 
             for(int j = 0; j < 15; j++){
                 String nomeCadeira = letraDaFila + String.valueOf(j+1);
@@ -48,5 +48,32 @@ public class Sessao {
 
     public Cadeira[][] getCadeiras(){
         return this.cadeiras;
+    }
+
+    public void exibirCadeiras(){
+        for(int i = 0; i < 10; i++){
+                for(int j = 0; j < 15; j++){
+                    if(cadeiras[i][j].getEstaOcupada()){
+                        System.out.print("❌ ");
+                    }
+                    else{
+                        System.out.print(cadeiras[i][j].getFileiraENumero() + " ");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println("-----------------------TELA-----------------------");
+    }
+
+    public boolean OcuparCadeira(String filaENumero){
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 15; j++){
+                if(this.cadeiras[i][j].getFileiraENumero().equals(filaENumero) && !this.cadeiras[i][j].getEstaOcupada()){
+                    this.cadeiras[i][j].switchIsOcupada();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
