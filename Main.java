@@ -24,11 +24,11 @@ class Main{
 
         sala1.cadastrarSessao(sessao1, 0);
 
-        ItemLanchonete pipocaSalgada = new ItemLanchonete("Pipoca salgada", 10.0);
-        ItemLanchonete pipocaDoce = new ItemLanchonete("Pipoca doce", 15.0);
-        ItemLanchonete cocaCola = new ItemLanchonete("Coca cola 350ml", 6.0);
-        ItemLanchonete cachorroQuente = new ItemLanchonete("Cachorro quente", 10.0);
-        ItemLanchonete sucoLaranja = new ItemLanchonete("Suco de laranja", 5.0);
+        ItemLanchonete pipocaSalgada = new ItemLanchonete(Produtos.PIPOCASALGADA.getNome(), Produtos.PIPOCASALGADA.getValor());
+        ItemLanchonete pipocaDoce = new ItemLanchonete(Produtos.PIPOCADOCE.getNome(), Produtos.PIPOCADOCE.getValor());
+        ItemLanchonete cocaCola = new ItemLanchonete(Produtos.COCACOLA.getNome(), Produtos.COCACOLA.getValor());
+        ItemLanchonete cachorroQuente = new ItemLanchonete(Produtos.CACHORROQUENTE.getNome(), Produtos.CACHORROQUENTE.getValor());
+        ItemLanchonete sucoLaranja = new ItemLanchonete(Produtos.SUCOLARANJA.getNome(), Produtos.SUCOLARANJA.getValor());
 
         Compra compra = new Compra(u1);
 
