@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Compra {
     private Usuario cliente;
-    private ArrayList<ItemLanchonete> itensLanchonete = new ArrayList<ItemLanchonete>();
+    private ArrayList<Produtos> itensLanchonete = new ArrayList<Produtos>();
     private Bilhete[] bilhetes = new Bilhete[9];
     
     public Compra(Usuario cliente){
@@ -19,11 +19,11 @@ public class Compra {
         this.cliente = cliente;
     }
 
-    public ArrayList<ItemLanchonete> getItensLanchonete(){
+    public ArrayList<Produtos> getItensLanchonete(){
         return this.itensLanchonete;
     }
 
-    public void adicionarUmItemDaLanchonete(ItemLanchonete item){
+    public void adicionarUmItemDaLanchonete(Produtos item){
         this.itensLanchonete.add(item);
         System.out.println("Item adicionado sucesso!");
     }
@@ -36,7 +36,7 @@ public class Compra {
                 break;
             }
 
-            ItemLanchonete aux = itensLanchonete.get(i);
+            Produtos aux = itensLanchonete.get(i);
             itensLanchonete.add(i, itensLanchonete.get(i+1));
             itensLanchonete.add(i+1, aux);
         }

@@ -24,17 +24,11 @@ class Main{
 
         sala1.cadastrarSessao(sessao1, 0);
 
-        ItemLanchonete pipocaSalgada = new ItemLanchonete(Produtos.PIPOCASALGADA.getNome(), Produtos.PIPOCASALGADA.getValor());
-        ItemLanchonete pipocaDoce = new ItemLanchonete(Produtos.PIPOCADOCE.getNome(), Produtos.PIPOCADOCE.getValor());
-        ItemLanchonete cocaCola = new ItemLanchonete(Produtos.COCACOLA.getNome(), Produtos.COCACOLA.getValor());
-        ItemLanchonete cachorroQuente = new ItemLanchonete(Produtos.CACHORROQUENTE.getNome(), Produtos.CACHORROQUENTE.getValor());
-        ItemLanchonete sucoLaranja = new ItemLanchonete(Produtos.SUCOLARANJA.getNome(), Produtos.SUCOLARANJA.getValor());
-
         Compra compra = new Compra(u1);
 
-        compra.adicionarUmItemDaLanchonete(sucoLaranja);
-        compra.adicionarUmItemDaLanchonete(sucoLaranja);
-        compra.adicionarUmItemDaLanchonete(pipocaSalgada);
+        compra.adicionarUmItemDaLanchonete(Produtos.CACHORROQUENTE);
+        compra.adicionarUmItemDaLanchonete(Produtos.COCACOLA);
+        compra.adicionarUmItemDaLanchonete(Produtos.PIPOCADOCE);
 
         compra.compraDeBilhetes(new Sala[]{sala1}, "Pelé: O Nascimento de uma Lenda", 2);
 
