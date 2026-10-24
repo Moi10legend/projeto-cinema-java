@@ -13,7 +13,7 @@ public class Bilhete{
         this.sala = sala;
         this.sessao = sessao;
         this.filme = filme;
-        this.valor = this.filme.getValor() + this.sala.getValor();
+        this.valor = this.filme.getValor() + (this.sala.getValor() * this.sala.getTipoSala().getMultiplicador());
         this.cadeiraComprada = cadeiraComprada;
     }
 

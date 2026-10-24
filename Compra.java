@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 // import java.util.List;
 import java.util.Scanner;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Compra {
     private Usuario cliente;
@@ -42,7 +44,8 @@ public class Compra {
         }
     }
 
-    public void compraDeBilhetes(Sala[] salas, String nomeFilme, int qtdDeBilhetes){
+    public void compraDeBilhetes(Sala[] salas, String nomeFilme, int qtdDeBilhetes, 
+        CupomPromocional cupom) throws VendasException{
         if(qtdDeBilhetes > 9){
             System.out.println("A quantidade de bilhetes é maior que o possível comprar de uma única vez.");
             return;
@@ -66,8 +69,7 @@ public class Compra {
             }
         }
         if (!possuiSessao){
-            System.out.println("O filme requerido não possui sessões.");
-            return;
+            throw new VendasException("Erro: Este filme não está mais em cartaz.");
         }
         System.out.println("Sessões disponíveis para o filme " + nomeFilme + ":");
         for(int i = 0; i < sessoesQuePossuemOFilme.size(); i++){
@@ -81,6 +83,12 @@ public class Compra {
         Sessao sessao;
         while(true){
             if(sessaoEscolhida >= 0 && sessaoEscolhida < sessoesQuePossuemOFilme.size()){
+                String horarioSessaoTexto = sessoesQuePossuemOFilme.get(sessaoEscolhida).getHorario();
+                DateTimeFormatter formatador = DateTimeFormatter.ofPattern("HH:mm");
+                LocalTime horarioRealSessao = LocalTime.parse(horarioSessaoTexto, formatador);
+                if(horarioRealSessao.isBefore(LocalTime.now())){
+                    throw new VendasException("Erro: o horário da sessão escolhida já passou");
+                } 
                 sessao = sessoesQuePossuemOFilme.get(sessaoEscolhida);
                 break;
             }else{
@@ -155,7 +163,7 @@ public class Compra {
                     System.out.println("Cadeira escolhida com sucesso!");
                     break;
                 }else{
-                    System.out.println("Cadeira inválida ou ocupada.");
+                    throw new VendasException("Erro: Cadeira já ocuopada.");
                 }    
             }
         }
@@ -175,10 +183,15 @@ public class Compra {
             if(this.cliente instanceof Estudante){
                 System.out.println("Bilhete "+ (i+1) + ": R$" + String.format("%.2f",this.bilhetes[i].getValor()/2));
                 somaTotal += this.bilhetes[i].getValor()/2;
+            }else if(this.cliente instanceof Critico){
+                System.out.println("Bilhete "+ (i+1) + ": R$0,00");
             }
-            System.out.println("Bilhete "+ (i+1) + ": R$" + String.format("%.2f",this.bilhetes[i].getValor()));
-            somaTotal += this.bilhetes[i].getValor();
+            else{
+                System.out.println("Bilhete "+ (i+1) + ": R$" + String.format("%.2f",this.bilhetes[i].getValor()));
+                somaTotal += this.bilhetes[i].getValor();
+            }
         }
+        somaTotal = somaTotal - somaTotal*(cupom.getPorcentagem()/100);
         System.out.println("Valor total: R$" + String.format("%.2f", somaTotal));
 
         for(int i = 0; i < salas[sessao.getNumeroSala()-1].getSessoes().length; i++){
