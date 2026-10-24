@@ -1,12 +1,13 @@
 public class Sala{
     private Sessao[] sessoes = new Sessao[5];
     private String[] horarios = {"13:00", "15:30", "18:00", "20:30", "23:00"};
-    private double valor;
+    private double valor = 30.0;
     private int numeroSala;
+    private Salas tipoSala;
 
-    public Sala(int numeroSala, double valor){
+    public Sala(int numeroSala, Salas tipoSala){
         this.numeroSala = numeroSala;
-        this.valor = valor;
+        this.tipoSala = tipoSala;
     }
 
     public void cadastrarSessao(Sessao sessao, int indiceSessoes){
@@ -40,7 +41,11 @@ public class Sala{
         return this.valor;
     }
     
-    public void setValor(double valor){
-        this.valor = valor;
+    public Salas getTipoSala(){
+        return this.tipoSala;
+    }
+
+    public void setTipoSala(Salas tipoSala){
+        this.tipoSala = tipoSala;
     }
 }

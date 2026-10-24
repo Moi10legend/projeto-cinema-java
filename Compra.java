@@ -172,6 +172,10 @@ public class Compra {
                 break;
             }
 
+            if(this.cliente instanceof Estudante){
+                System.out.println("Bilhete "+ (i+1) + ": R$" + String.format("%.2f",this.bilhetes[i].getValor()/2));
+                somaTotal += this.bilhetes[i].getValor()/2;
+            }
             System.out.println("Bilhete "+ (i+1) + ": R$" + String.format("%.2f",this.bilhetes[i].getValor()));
             somaTotal += this.bilhetes[i].getValor();
         }
