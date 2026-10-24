@@ -87,6 +87,7 @@ public class Compra {
                 DateTimeFormatter formatador = DateTimeFormatter.ofPattern("HH:mm");
                 LocalTime horarioRealSessao = LocalTime.parse(horarioSessaoTexto, formatador);
                 if(horarioRealSessao.isBefore(LocalTime.now())){
+                    scanner.close();
                     throw new VendasException("Erro: o horário da sessão escolhida já passou");
                 } 
                 sessao = sessoesQuePossuemOFilme.get(sessaoEscolhida);
@@ -163,6 +164,7 @@ public class Compra {
                     System.out.println("Cadeira escolhida com sucesso!");
                     break;
                 }else{
+                    scanner.close();
                     throw new VendasException("Erro: Cadeira já ocuopada.");
                 }    
             }
