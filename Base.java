@@ -28,6 +28,6 @@ public abstract class Base {
         this.email = email;
     }
 
-    abstract public void adicionarUsuario();
-    abstract public void alterarUsuario();
+    abstract public void adicionarUsuario(Usuario usuario);
+    abstract public void alterarUsuario(String emailBusca, Usuario usuarioNovo);
 }
