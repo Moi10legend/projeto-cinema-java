@@ -1,5 +1,5 @@
 interface GerenciaDeFilmes {
-    public void incluirFilme();
-    public void excluirFilme();
-    public void alterarFilme();
+    public void incluirFilme(Filme filme);
+    public void excluirFilme(String nomeFilme);
+    public void alterarFilme(String nomeFilmeBusca, Filme filmeAtualizado);
 }
