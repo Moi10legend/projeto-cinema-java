@@ -193,7 +193,10 @@ public class Compra {
                 somaTotal += this.bilhetes[i].getValor();
             }
         }
-        somaTotal = somaTotal - somaTotal*(cupom.getPorcentagem()/100);
+        if (cupom != null) {
+            somaTotal = somaTotal - somaTotal * (cupom.getPorcentagem() / 100.0);
+        }
+    
         System.out.println("Valor total: R$" + String.format("%.2f", somaTotal));
 
         for(int i = 0; i < salas[sessao.getNumeroSala()-1].getSessoes().length; i++){
