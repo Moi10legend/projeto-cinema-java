@@ -1,0 +1,6 @@
+1;111.111.111-11;123;20;M;guilhermecocada@gmail.com;null;null;111
+1;111.111.111-11;123;20;M;guilhermecocada@gmail.com;null;null;111
+100;222.222.222-22;senha123;25;F;maria.cliente@email.com;null;null;999
+1;111.111.111-11;senhaNova789;21;M;joao@email.com;null;null;111
+1;111.111.111-11;123;20;M;joao@email.com;null;null;111
+1;111.111.111-11;123;20;M;guilhermecocada@gmail.com;1111 1111 1111 1111;null;111
