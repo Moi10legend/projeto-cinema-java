@@ -14,21 +14,23 @@ public class Funcionario extends Base implements GerenciaDeFilmes{
         this.salario = salario;
     }
 
-    public void adicionarUsuario(){
-
+    public void adicionarUsuario(Usuario usuario) {
+       
     }
 
-    public void alterarUsuario(){
+    public void alterarUsuario(String emailBusca, Usuario usuarioNovo) {
         
     }
 
-    public void incluirFilme(){
+    public void incluirFilme(Filme filme) {
 
     }
-    public void excluirFilme(){
 
+    public void excluirFilme(String nomeFilme) {
+        
     }
-    public void alterarFilme(){
+
+    public void alterarFilme(String nomeFilmeBusca, Filme filmeAtualizado) {
         
     }
     
