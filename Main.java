@@ -22,8 +22,8 @@ class Main{
             0
         );
 
-        admin.incluirFilme(filme1);
-        admin.incluirFilme(filme2);
+        // admin.incluirFilme(filme1);
+        // admin.incluirFilme(filme2);
 
         Usuario u1 = new Usuario(
             1, 
@@ -36,11 +36,11 @@ class Main{
             "1111 1111 1111 1111",
             "111"    
         );
-        admin.adicionarUsuario(u1);
+        //admin.adicionarUsuario(u1);
 
         System.out.println("\n=== 2. TESTE DE SALAS E SESSÕES ===");
         Sala sala1 = new Sala(1, Salas.SALACOMUM);
-        Sessao sessao1 = new Sessao(filme1, "13:00", 1);
+        Sessao sessao1 = new Sessao(filme1, "18:00", 1);
 
         sala1.cadastrarSessao(sessao1, 0);
 
