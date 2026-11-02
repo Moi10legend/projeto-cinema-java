@@ -43,8 +43,9 @@ public class Persistencia {
                     double valor = Double.parseDouble(partes[3]);
                     double nota = Double.parseDouble(partes[4]);
                     int qtdCriticos = Integer.parseInt(partes[5]);
+                    String cartaz = partes[6];
 
-                    Filme filme = new Filme(nome, sinopse, duracao, valor, nota, qtdCriticos);
+                    Filme filme = new Filme(nome, sinopse, duracao, valor, nota, qtdCriticos, cartaz);
                     filmes.add(filme);
                 }
             }

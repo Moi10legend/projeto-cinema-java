@@ -33,6 +33,10 @@ public class Administrador extends Base implements GerenciaDeFilmes{
     public void setID(int iD) {
         ID = iD;
     }
+
+    public List<Usuario> getListaUsuario(){
+        return this.listaUsuarios;
+    }
  
     public void adicionarUsuario(Usuario usuario){
         listaUsuarios.add(usuario);
@@ -60,6 +64,10 @@ public class Administrador extends Base implements GerenciaDeFilmes{
         } else {
             System.out.println("Usuário não encontrado.");
         }
+    }
+
+    public List<Filme> getListaFilmes(){
+        return this.listaFilmes;
     }
  
     public void incluirFilme(Filme filme){

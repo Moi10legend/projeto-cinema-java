@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaSessoesController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- Elementos que receberão os dados injetados pelo Controller -->
+    <Label fx:id="tituloFilmeLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+    <Label fx:id="detalhesFilmeLabel" style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
+    
+    <Label text="Escolha um horário:" style="-fx-font-size: 18px; -fx-padding: 20 0 10 0;"/>
+    
+    <FlowPane fx:id="containerSessoes" hgap="15.0" vgap="15.0" alignment="CENTER"/>
+    
+    <!-- Botão para voltar à tela anterior -->
+    <Button text="Voltar" onAction="#voltarTelaInicial" style="-fx-margin-top: 30px;"/>
+</VBox>

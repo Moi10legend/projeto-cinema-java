@@ -1,9 +1,4 @@
-Pelé: O Nascimento de uma Lenda;A vida do maior do futebol;103;20.0;0.0;0
-Inception;Um ladrão que rouba segredos através dos sonhos;148;25.0;0.0;0
-Pelé: O Nascimento de uma Lenda;A vida do maior do futebol;103;20.0;0.0;0
-Inception;Um ladrão que rouba segredos através dos sonhos;148;25.0;0.0;0
-Interestelar;Uma equipe de exploradores viaja através de um buraco de minhoca.;169;30.0;0.0;0
-Matrix Resurrections;Continuação da saga cyberpunk;148;30.0;0.0;0
-Matrix Resurrections;Continuação da saga cyberpunk;148;30.0;0.0;0
-Pelé: O Nascimento de uma Lenda;A vida do maior do futebol;103;20.0;0.0;0
-Inception;Um ladrão que rouba segredos através dos sonhos;148;25.0;0.0;0
+Pelé: O Nascimento de uma Lenda;A vida do maior do futebol;103;20.0;0.0;0;https://ingresso-a.akamaihd.net/img/cinema/cartaz/19802-cartaz.jpg
+Inception;Um ladrão que rouba segredos através dos sonhos;148;25.0;0.0;0;https://m.media-amazon.com/images/S/pv-target-images/df0260faac25a42a921a311dec603754350e6b7ac8c04ba38efb24876b3c5fc2.jpg
+Interestelar;Uma equipe de exploradores viaja através de um buraco de minhoca.;169;30.0;0.0;0;https://ucicinemas.com.br/Content/Upload/Filmes/Posters/12571/filme_12571.jpg
+Matrix Resurrections;Continuação da saga cyberpunk;148;30.0;0.0;0;https://play-lh.googleusercontent.com/_ljfaZvwK-FOWdYCPKd4uV4OkUAmEs2EWOt0CYo1DK7Yici5LQKIfQja_3vxaYBADe-rdb-NFPsqCuWB_PE

@@ -7,15 +7,25 @@ public class Filme{
     private double nota;
     private int quantidade_criticos;
     private Critica[] critica = new Critica[100];
+    private String cartaz;
+
+    public String getCartaz() {
+        return cartaz;
+    }
+
+    public void setCartaz(String cartaz) {
+        this.cartaz = cartaz;
+    }
 
     public Filme(String nome, String sinopse, int duracao, double valor, double nota,
-        int quantidade_criticos){
+        int quantidade_criticos, String cartaz){
         this.nome = nome;
         this.sinopse = sinopse;
         this.duracao = duracao;
         this.valor = valor;
         this.nota = nota;
         this.quantidade_criticos = quantidade_criticos;
+        this.cartaz = cartaz;
     }
 
     public String getNome(){

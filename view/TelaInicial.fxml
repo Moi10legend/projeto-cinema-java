@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaInicialController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Filmes em Cartaz" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+    
+    <!-- O ScrollPane permite rolar a tela. O FlowPane vai receber os cartazes -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <FlowPane fx:id="gradeFilmes" hgap="20.0" vgap="20.0" alignment="CENTER"/>
+    </ScrollPane>
+</VBox>
