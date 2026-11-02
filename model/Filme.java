@@ -1,3 +1,4 @@
+package model;
 public class Filme{
     private String nome;
     private String sinopse;

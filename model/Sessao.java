@@ -1,3 +1,4 @@
+package model;
 public class Sessao {
     private Filme filme;
     private String horario;

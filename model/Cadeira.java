@@ -1,3 +1,4 @@
+package model;
 public class Cadeira {
     private String fileiraENumero;
     private boolean estaOcupada = false;

@@ -1,3 +1,4 @@
+package model;
 public class Critica {
     private String nome;
     private String origem;

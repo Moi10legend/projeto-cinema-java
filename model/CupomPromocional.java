@@ -1,3 +1,4 @@
+package model;
 public enum CupomPromocional {
     SOCIOCINEMA(40),
     OCINEFOLO(60),

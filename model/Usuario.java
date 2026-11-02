@@ -1,3 +1,4 @@
+package model;
 public class Usuario{
     private int userId;
     private String cpf;
@@ -18,7 +19,7 @@ public class Usuario{
             this.genero = genero;
             this.email = email;
             this.nomeDoCartao = nomeDoCartao;
-            this.nomeDoCartao = numeroDoCartao;
+            this.numeroDoCartao = numeroDoCartao;
             this.codigoDeSegurancaCartao = codigoDeSegurancaCartao;
         }
 

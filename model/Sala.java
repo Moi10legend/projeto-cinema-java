@@ -1,3 +1,4 @@
+package model;
 public class Sala{
     private Sessao[] sessoes = new Sessao[5];
     private double valor = 30.0;

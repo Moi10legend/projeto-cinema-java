@@ -1,3 +1,4 @@
+package model;
 interface GerenciaDeFilmes {
     public void incluirFilme(Filme filme);
     public void excluirFilme(String nomeFilme);

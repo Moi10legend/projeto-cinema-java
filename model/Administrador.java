@@ -1,3 +1,4 @@
+package model;
 import java.io.Serializable;
 import java.util.List;
 
@@ -5,8 +6,8 @@ public class Administrador extends Base implements GerenciaDeFilmes{
     private List<Filme> listaFilmes;
     private List<Usuario> listaUsuarios;
 
-    private static final String ARQUIVO_FILMES = "filmes.txt";
-    private static final String ARQUIVO_USUARIOS = "usuarios.txt";
+    private static final String ARQUIVO_FILMES = "data/filmes.txt";
+    private static final String ARQUIVO_USUARIOS = "data/usuarios.txt";
 
     private double salario;
     private int ID;
@@ -86,5 +87,23 @@ public class Administrador extends Base implements GerenciaDeFilmes{
             }
         }
         System.out.println("Filme não encontrado.");
+    }
+
+    public Usuario buscarUsuarioPorEmail(String email) {
+        for (Usuario u : listaUsuarios) { //[cite: 2]
+            if (u.getEmail().equalsIgnoreCase(email)) {
+                return u; // Retorna a instância completa do usuário
+            }
+        }
+        return null; // Retorna null se o usuário não for encontrado
+    }
+
+    public Filme buscarFilmePorNome(String nomeFilme) {
+        for (Filme f : listaFilmes) { //[cite: 2]
+            if (f.getNome().equalsIgnoreCase(nomeFilme)) {
+                return f; // Retorna a instância completa do filme
+            }
+        }
+        return null; // Retorna null se o filme não for encontrado
     }
 }

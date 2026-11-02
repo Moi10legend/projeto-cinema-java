@@ -1,3 +1,4 @@
+package model;
 public class Funcionario extends Base implements GerenciaDeFilmes{
     private double salario;
 

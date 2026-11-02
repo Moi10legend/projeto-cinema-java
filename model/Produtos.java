@@ -1,3 +1,4 @@
+package model;
 public enum Produtos {
     PIPOCASALGADA("Pipoca Salgada" ,10.0),
     PIPOCADOCE("Pipoca Doce", 15.0),

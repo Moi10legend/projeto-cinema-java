@@ -1,3 +1,4 @@
+package model;
 public enum Salas {
     SALACOMUM("Comum", 1),
     SALA3D("3D", 1.2),

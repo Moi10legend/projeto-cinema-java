@@ -1,42 +1,22 @@
+import model.Administrador;
+import model.Compra;
+import model.Filme;
+import model.Genero;
+import model.Produtos;
+import model.Sala;
+import model.Salas;
+import model.Sessao;
+import model.Usuario;
+import model.VendasException;
+
 class Main{
     public static void main(String [] args){
         System.out.println("=== 1. TESTE DE PERSISTÊNCIA E ADMINISTRADOR ===");
         
         Administrador admin = new Administrador(35, "Carlos Admin", "admin@cinema.com", 5000.0, 101);
 
-        Filme filme1 = new Filme(
-            "Pelé: O Nascimento de uma Lenda",
-            "A vida do maior do futebol",
-            103,
-            20.0,
-            0.0,
-            0
-        );
-
-        Filme filme2 = new Filme(
-            "Inception",
-            "Um ladrão que rouba segredos através dos sonhos",
-            148,
-            25.0,
-            0.0,
-            0
-        );
-
-        // admin.incluirFilme(filme1);
-        // admin.incluirFilme(filme2);
-
-        Usuario u1 = new Usuario(
-            1, 
-            "111.111.111-11",
-            "123",
-            20,
-            Genero.M,
-            "guilhermecocada@gmail.com",
-            "GUILHERME SILVA",
-            "1111 1111 1111 1111",
-            "111"    
-        );
-        //admin.adicionarUsuario(u1);
+        Filme filme1 = admin.buscarFilmePorNome("Pelé: O Nascimento de uma Lenda");
+        System.out.println(filme1);
 
         System.out.println("\n=== 2. TESTE DE SALAS E SESSÕES ===");
         Sala sala1 = new Sala(1, Salas.SALACOMUM);
@@ -44,6 +24,8 @@ class Main{
 
         sala1.cadastrarSessao(sessao1, 0);
 
+        Usuario u1 = admin.buscarUsuarioPorEmail("maria.cliente@email.com");
+        System.out.println(u1);
         System.out.println("\n=== 3. TESTE DE COMPRA E LANCHONETE ===");
         Compra compra = new Compra(u1);
 

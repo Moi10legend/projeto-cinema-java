@@ -1,3 +1,4 @@
+package model;
 public class Bilhete{
     private String userId;
     private String cpf;
