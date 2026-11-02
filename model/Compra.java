@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 // import java.util.List;
 import java.util.Scanner;
 import java.time.LocalTime;
@@ -9,6 +10,8 @@ public class Compra {
     private Usuario cliente;
     private ArrayList<Produtos> itensLanchonete = new ArrayList<Produtos>();
     private Bilhete[] bilhetes = new Bilhete[9];
+    private Sessao sessao;
+    private List<Cadeira> cadeiras;
     
     public Compra(Usuario cliente){
         this.cliente = cliente;
@@ -24,6 +27,22 @@ public class Compra {
 
     public ArrayList<Produtos> getItensLanchonete(){
         return this.itensLanchonete;
+    }
+
+    public Sessao getSessao(){
+        return this.sessao;
+    }
+
+    public void setSessao(Sessao sessao) {
+        this.sessao = sessao;
+    }
+
+    public List<Cadeira> getCadeiras(){
+        return this.cadeiras;
+    }
+
+    public void setCadeiras(List<Cadeira> cadeiras) {
+        this.cadeiras = cadeiras;
     }
 
     public void adicionarUmItemDaLanchonete(Produtos item){
@@ -43,6 +62,28 @@ public class Compra {
             itensLanchonete.add(i, itensLanchonete.get(i+1));
             itensLanchonete.add(i+1, aux);
         }
+    }
+
+    public double calcularTotalDaCompra(EstrategiaPreco estrategia, CupomPromocional cupom) {
+        double total = 0.0;
+        
+        // Soma da Lanchonete
+        for (Produtos item : this.itensLanchonete) {
+            total += item.getValor();
+        }
+        
+        // Soma dos Ingressos com a Estratégia aplicada
+        double valorBaseIngresso = sessao.getFilme().getValor(); // Pode multiplicar pelo fator da Sala aqui
+        double valorComDescontoTipo = estrategia.calcularPreco(valorBaseIngresso);
+        
+        total += (valorComDescontoTipo * cadeiras.size());
+        
+        // Aplica o cupom se existir
+        if (cupom != null) {
+            total = total - (total * (cupom.getPorcentagem() / 100.0)); //[cite: 12]
+        }
+        
+        return total;
     }
 
     public void compraDeBilhetes(Sala[] salas, String nomeFilme, int qtdDeBilhetes, 
@@ -69,7 +110,7 @@ public class Compra {
         if(qtdDeBilhetes > 1){
             exibirSugestoesDeCadeiras(qtdDeBilhetes, cadeiras);
         }
-        escolherCadeiras(sessao, scanner, qtdDeBilhetes, salas);
+        gerarBilhetes(sessao, scanner, qtdDeBilhetes, salas);
         
         exibirExtratoDaCompra(cupom, salas, sessao);
         
@@ -167,7 +208,7 @@ public class Compra {
         }
     }
 
-    private void escolherCadeiras(Sessao sessao, Scanner scanner, int qtdDeBilhetes, Sala[] salas) 
+    private void gerarBilhetes(Sessao sessao, Scanner scanner, int qtdDeBilhetes, Sala[] salas) 
     throws VendasException{
         for(int i = 0; i < qtdDeBilhetes; i++){
             while(true){
@@ -192,7 +233,7 @@ public class Compra {
         }
     }
 
-    private void exibirExtratoDaCompra(CupomPromocional cupom, Sala[] salas, Sessao sessao){
+    public void exibirExtratoDaCompra(CupomPromocional cupom, Sala[] salas, Sessao sessao){
         System.out.println();
         System.out.println("Extrato da compra: ");
         double somaTotal = 0;

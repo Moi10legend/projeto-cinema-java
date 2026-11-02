@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaLanchoneteController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Bomboniere / Lanchonete" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="20" alignment="CENTER">
+        <VBox spacing="10">
+            <Label text="Produtos Disponíveis:"/>
+            <ListView fx:id="listaProdutosDisponiveis" prefHeight="250" prefWidth="250"/>
+            <Button text="Adicionar ao Carrinho" onAction="#adicionarAoCarrinho"/>
+        </VBox>
+        
+        <VBox spacing="10">
+            <Label text="Seu Carrinho:"/>
+            <ListView fx:id="carrinhoView" prefHeight="250" prefWidth="250"/>
+            <!-- Opcional: Criar botão de remover item chamando retirarUmITemDaLanchonete() -->
+        </VBox>
+    </HBox>
+    
+    <HBox alignment="CENTER" spacing="20">
+        <Button text="Voltar" onAction="#voltarParaCadeiras"/> 
+        <Button text="Ir para Pagamento" onAction="#avancarPagamento" style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

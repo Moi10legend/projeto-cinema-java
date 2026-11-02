@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaCadeirasController">
+    <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+    
+    <Label text="Selecione seus Assentos" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+    
+    <!-- Painel de Sugestões -->
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Quantidade de bilhetes (máx 9):"/>
+        <TextField fx:id="campoQuantidade" prefWidth="50" promptText="Ex: 3"/>
+        <Button text="Sugerir Assentos" onAction="#sugerirCadeiras"/>
+    </HBox>
+
+    <!-- Legenda de Cores -->
+    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+        <Label text="🟩 Livre" style="-fx-text-fill: #4caf50; -fx-font-weight: bold;"/>
+        <Label text="🟥 Ocupada" style="-fx-text-fill: #ff4c4c; -fx-font-weight: bold;"/>
+        <Label text="🟨 Sugestão" style="-fx-text-fill: #ffb300; -fx-font-weight: bold;"/>
+        <Label text="🟦 Selecionada" style="-fx-text-fill: #2196f3; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <!-- Grid de Cadeiras -->
+    <GridPane fx:id="gridCadeiras" alignment="CENTER" hgap="5" vgap="5"/>
+    
+    <!-- Representação da Tela do Cinema na parte inferior -->
+    <Label text="T E L A" alignment="CENTER" prefWidth="750" style="-fx-background-color: #666666; -fx-text-fill: white; -fx-padding: 8; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+    
+    <HBox alignment="CENTER" spacing="20" style="-fx-margin-top: 10;">
+        <Button text="Voltar" onAction="#voltarParaSessoes"/>
+        <Button text="Avançar para Lanchonete" onAction="#avancarLanchonete" style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

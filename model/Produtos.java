@@ -21,4 +21,10 @@ public enum Produtos {
     public double getValor(){
         return valor;
     }
+
+    @Override
+    public String toString() {
+        // Exemplo: "Pipoca Grande - R$ 20.00"
+        return this.getNome() + " - R$ " + String.format("%.2f", this.getValor());
+    }
 }

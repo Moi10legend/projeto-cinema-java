@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaSessoesController">
@@ -14,7 +16,11 @@
     
     <Label text="Escolha um horário:" style="-fx-font-size: 18px; -fx-padding: 20 0 10 0;"/>
     
-    <FlowPane fx:id="containerSessoes" hgap="15.0" vgap="15.0" alignment="CENTER"/>
+    <VBox fx:id="containerSalas" spacing="20.0" alignment="TOP_LEFT">
+        <padding>
+            <Insets top="10" right="0" bottom="10" left="0"/>
+        </padding>
+    </VBox>
     
     <!-- Botão para voltar à tela anterior -->
     <Button text="Voltar" onAction="#voltarTelaInicial" style="-fx-margin-top: 30px;"/>

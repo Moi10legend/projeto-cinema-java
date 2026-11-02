@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaPagamentoController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <!-- Coluna Esquerda: Login e Cupom -->
+    <VBox spacing="15" prefWidth="300">
+        <Label text="1. Identificação" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="campoEmail" promptText="E-mail"/>
+        <PasswordField fx:id="campoSenha" promptText="Senha"/>
+        <Button text="Validar Usuário" onAction="#validarUsuario"/>
+        <Label fx:id="statusLoginLabel" text="Não logado" textFill="red"/>
+        
+        <Label text="2. Tipo de Ingresso" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="comboTipoIngresso" promptText="Selecione..." prefWidth="200" onAction="#atualizarResumo"/>
+        
+        <Label text="3. Cupom Promocional" style="-fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <TextField fx:id="campoCupom" promptText="Ex: SOCIOCINEMA"/>
+            <Button text="Aplicar" onAction="#aplicarCupom"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Coluna Direita: Resumo e Cartão -->
+    <VBox spacing="15" prefWidth="300">
+        <Label text="Resumo da Compra" style="-fx-font-weight: bold; -fx-font-size: 18px;"/>
+        <Label fx:id="resumoLabel" text="Calculando..." style="-fx-border-color: #ccc; -fx-padding: 10;"/>
+        <Label fx:id="totalLabel" text="Total: R$ 0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: green;"/>
+        
+        <Label text="4. Pagamento" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="campoCartaoNome" promptText="Nome no Cartão"/>
+        <TextField fx:id="campoCartaoNum" promptText="Número do Cartão"/>
+        <PasswordField fx:id="campoCartaoCVV" promptText="CVV"/>
+        
+        <Button text="Finalizar Compra" onAction="#finalizarCompra" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-size: 16px;" prefWidth="300"/>
+    </VBox>
+</HBox>

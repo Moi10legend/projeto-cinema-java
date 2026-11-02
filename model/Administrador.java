@@ -1,10 +1,15 @@
 package model;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Administrador extends Base implements GerenciaDeFilmes{
+    private static Administrador instanciaUnica;
+
     private List<Filme> listaFilmes;
     private List<Usuario> listaUsuarios;
+    private List<Sala> listaSalas;       // Nova lista
+    private List<Sessao> listaSessoes;
 
     private static final String ARQUIVO_FILMES = "data/filmes.txt";
     private static final String ARQUIVO_USUARIOS = "data/usuarios.txt";
@@ -12,13 +17,59 @@ public class Administrador extends Base implements GerenciaDeFilmes{
     private double salario;
     private int ID;
 
-    public Administrador(int idade, String nome, String email, double salario, int ID){
+    private Administrador(int idade, String nome, String email, double salario, int ID){
         super(idade, nome, email);
         this.salario = salario;
         this.ID = ID;
 
         this.listaFilmes = Persistencia.carregarFilmes(ARQUIVO_FILMES);
         this.listaUsuarios = Persistencia.carregarUsuarios(ARQUIVO_USUARIOS);
+        this.listaSalas = new ArrayList<>();
+        this.listaSessoes = new ArrayList<>();
+        
+        inicializarSalasESessoes();
+    }
+
+    public static Administrador getInstance() {
+        if (instanciaUnica == null) {
+            instanciaUnica = new Administrador(35, "Carlos Admin", "admin@cinema.com", 5000, 1);
+        }
+        return instanciaUnica;
+    }
+
+    private void inicializarSalasESessoes() {
+        // Exemplo: Criando a Sala 1
+        Sala sala1 = new Sala(1, Salas.SALACOMUM);
+        listaSalas.add(sala1);
+
+        // Verifica se existem filmes carregados do TXT para criar as sessões
+        if (!listaFilmes.isEmpty()) {
+            Filme primeiroFilme = listaFilmes.get(0); // Pega o filme 1 do TXT
+            
+            // Criando sessões associadas ao filme e à sala
+            Sessao s1 = new Sessao(primeiroFilme, "14:00", 1);
+            Sessao s2 = new Sessao(primeiroFilme, "16:30", 1);
+            sala1.cadastrarSessao(s1, 0);
+            sala1.cadastrarSessao(s2, 1);
+            
+            listaSessoes.add(s1);
+            listaSessoes.add(s2);
+        }
+    }
+
+    public List<Sala> getListaSalas() {
+        return this.listaSalas;
+    }
+
+    //Função de busca que o seu Controller vai chamar
+    public List<Sessao> buscarSessoesPorFilme(String nomeFilme) {
+        List<Sessao> sessoesEncontradas = new ArrayList<>();
+        for (Sessao s : listaSessoes) {
+            if (s.getFilme().getNome().equalsIgnoreCase(nomeFilme)) {
+                sessoesEncontradas.add(s);
+            }
+        }
+        return sessoesEncontradas;
     }
 
     public double getSalario() {

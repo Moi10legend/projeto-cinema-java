@@ -20,15 +20,13 @@ public class TelaInicialController {
 
     @FXML
     private FlowPane gradeFilmes;
-
-    // Instanciando temporariamente para carregar os dados
-    private Administrador admin = new Administrador(30, "Admin", "admin@cinema", 5000, 1);
+    
 
     // O método initialize roda automaticamente quando a tela abre
     @FXML
     public void initialize() {
         // Supondo que você criou o método getListaFilmes() no Administrador
-        for (Filme filme : admin.getListaFilmes()) {
+        for (Filme filme : Administrador.getInstance().getListaFilmes()) {
             
             // 1. Cria o contêiner do card (VBox empilha itens na vertical)
             VBox card = new VBox(10);
