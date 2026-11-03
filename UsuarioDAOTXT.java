@@ -79,4 +79,15 @@ public class UsuarioDAOTXT implements UsuarioDAO {
             System.err.println("Erro ao salvar utilizadores: " + e.getMessage());
         }
     }
+
+    @Override
+    public Usuario buscarPorEmail(String email) {
+        List<Usuario> usuarios = buscarTodos();
+        for (Usuario u : usuarios) {
+            if (u.getEmail().equalsIgnoreCase(email)) {
+                return u;
+            }
+        }
+        return null; // Retorna nulo se o usuário não for encontrado no arquivo
+    }
 }

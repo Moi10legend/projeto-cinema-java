@@ -64,4 +64,15 @@ public class FilmeDAOTXT implements FilmeDAO {
             System.err.println("Erro ao salvar filmes: " + e.getMessage());
         }
     }
+
+    @Override
+    public Filme buscarPorNome(String nome) {
+        List<Filme> filmes = buscarTodos();
+        for (Filme f : filmes) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                return f;
+            }
+        }
+        return null; // Retorna nulo se o filme não for encontrado no arquivo
+    }
 }

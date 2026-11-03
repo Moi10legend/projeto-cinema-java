@@ -5,4 +5,5 @@ public interface UsuarioDAO {
     void alterar(String emailBusca, Usuario usuarioNovo);
     void excluir(String email);
     List<Usuario> buscarTodos();
+    Usuario buscarPorEmail(String email);
 }

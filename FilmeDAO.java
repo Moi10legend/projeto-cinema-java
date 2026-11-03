@@ -5,4 +5,5 @@ public interface FilmeDAO {
     void alterar(String nomeBusca, Filme filmeAtualizado);
     void excluir(String nomeFilme);
     List<Filme> buscarTodos();
+    Filme buscarPorNome(String nome);
 }

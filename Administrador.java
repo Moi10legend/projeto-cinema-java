@@ -6,16 +6,14 @@ public class Administrador extends Base implements GerenciaDeFilmes {
     private FilmeDAO filmeDAO;
     private UsuarioDAO usuarioDAO;
 
-    public Administrador(int idade, String nome, String email, double salario, int ID) {
+    public Administrador(int idade, String nome, String email, double salario, int ID, FilmeDAO filmeDAO, UsuarioDAO usuarioDAO) {
         super(idade, nome, email);
         this.salario = salario;
         this.ID = ID;
-        
-        // Instanciação das implementações concretas
-        this.filmeDAO = new FilmeDAOTXT();
-        this.usuarioDAO = new UsuarioDAOTXT();
+        // As dependências vêm de fora
+        this.filmeDAO = filmeDAO;
+        this.usuarioDAO = usuarioDAO;
     }
-
     public double getSalario() { return salario; }
     public void setSalario(double salario) { this.salario = salario; }
     public int getID() { return ID; }
