@@ -39,3 +39,50 @@ O sistema simula um terminal de autoatendimento (totem) de cinema, permitindo ao
 2.  **Strategy:** Utilizado no cálculo de preços (`EstrategiaPreco`). Em vez de múltiplos `if/else` validando o tipo de cliente, o sistema delega o cálculo para classes específicas (`PrecoInteira`, `PrecoEstudante`, `PrecoCritico`), facilitando a manutenção e adição de novas promoções.
 
 ---
+
+## 📁 Estrutura do Projeto
+
+```text
+projeto-cinema/
+├── src/
+│   ├── controller/      # Controladores do JavaFX (TelaInicial, TelaSessoes, TelaCadeiras, etc.)
+│   ├── model/           # Regras de negócio, Singleton (Administrador), Padrão Strategy, Enums
+│   ├── view/            # Arquivos visuais em .fxml
+│   └── Main.java        # Classe inicial da aplicação JavaFX
+├── data/
+│   ├── filmes.txt       # Base de dados de filmes
+│   └── usuarios.txt     # Base de dados de usuários cadastrados
+├── .vscode/             # Configurações do ambiente
+└── README.md
+```
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+*   **Java Development Kit (JDK)** versão 17 ou superior.
+*   **JavaFX SDK** (baixado e extraído localmente).
+*   **Visual Studio Code** com o *Extension Pack for Java*.
+
+### Passos para rodar no VS Code
+1. Clone este repositório para a sua máquina.
+2. Baixe o [JavaFX SDK](https://gluonhq.com/products/javafx/) e extraia numa pasta conhecida (ex: `C:/javafx-sdk/`).
+3. No VS Code, abra o arquivo `.vscode/launch.json`.
+4. Atualize o caminho no parâmetro `"vmArgs"` para apontar para a pasta `lib` do seu JavaFX local:
+   ```json
+   "vmArgs": "--module-path \"C:/caminho/para/seu/javafx-sdk/lib\" --add-modules javafx.controls,javafx.fxml"
+   ```
+5. Abra o arquivo `Main.java` e execute o projeto pela aba lateral **Run and Debug** utilizando a configuração criada no `launch.json`.
+
+---
+
+## 👤 Autores
+* Moisés Freire
+* Matheus Gabriel
+* Lucas Vinicius
+* Daniel Queiroz
+
+Desenvolvimento de toda a lógica, interface gráfica e integração do padrão MVC.
+
+Projeto desenvolvido para a disciplina de Programação Orientada a Objetos.
