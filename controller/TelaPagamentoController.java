@@ -4,6 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class TelaPagamentoController {
     
@@ -102,7 +107,17 @@ public class TelaPagamentoController {
         }
         
         mostrarAlerta("Sucesso", "Compra finalizada! Bom filme.");
-        // Implementar código para voltar para a tela inicial...
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TelaInicial.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) totalLabel.getScene().getWindow();
+            stage.setTitle("Capivara records");
+            stage.setScene(new Scene(root, 800, 600));
+        } catch (IOException e) {
+            System.err.println("Erro ao voltar para a tela inicial: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void mostrarAlerta(String titulo, String msg) {

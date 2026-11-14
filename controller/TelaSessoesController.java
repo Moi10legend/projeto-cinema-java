@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 
 import java.time.LocalTime;
-import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Administrador;
 import model.Critico;
+import model.Critica;
 import model.Filme;
 import model.Sala;
 import model.Sessao;
@@ -167,7 +167,12 @@ public class TelaSessoesController {
             campoCritica.clear();
             
             // Opcional: imprimir no console para confirmar que entrou no array
-            System.out.println("Críticas atuais do filme: " + filmeAtual.getCriticas()[0].getMensagem());
+            System.out.println("Críticas atuais do filme: ");
+            Critica[] criticas = filmeAtual.getCriticas();
+            for(Critica critica: criticas){
+                if(critica != null) System.out.println(critica.getMensagem());
+            
+            }
         }
     }
 }

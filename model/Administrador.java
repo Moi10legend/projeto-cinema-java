@@ -1,5 +1,4 @@
 package model;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,20 +39,26 @@ public class Administrador extends Base implements GerenciaDeFilmes{
     private void inicializarSalasESessoes() {
         // Exemplo: Criando a Sala 1
         Sala sala1 = new Sala(1, Salas.SALACOMUM);
+        Sala sala2 = new Sala(2, Salas.SALAXD_3D);
         listaSalas.add(sala1);
+        listaSalas.add(sala2);
 
         // Verifica se existem filmes carregados do TXT para criar as sessões
         if (!listaFilmes.isEmpty()) {
             Filme primeiroFilme = listaFilmes.get(0); // Pega o filme 1 do TXT
+            Filme inception = listaFilmes.get(1);
             
             // Criando sessões associadas ao filme e à sala
             Sessao s1 = new Sessao(primeiroFilme, "14:00", 1);
             Sessao s2 = new Sessao(primeiroFilme, "16:30", 1);
+            Sessao s3 = new Sessao(inception, "22:00", 2);
             sala1.cadastrarSessao(s1, 0);
             sala1.cadastrarSessao(s2, 1);
+            sala2.cadastrarSessao(s3, 2);
             
             listaSessoes.add(s1);
             listaSessoes.add(s2);
+            listaSessoes.add(s3);
         }
     }
 
@@ -167,11 +172,14 @@ public class Administrador extends Base implements GerenciaDeFilmes{
     }
 
     public Critico buscarCriticoPorOrigem(String origem) {
+        System.out.println(origem);
         for (Usuario u : listaUsuarios) {
             // Verifica se o usuário atual do loop é da classe Critico
+            System.out.println(u.getEmail());
             if (u instanceof Critico) {
                 Critico c = (Critico) u;
                 if (c.getOrigem().equalsIgnoreCase(origem)) {
+                    
                     return c; // Retorna o crítico encontrado
                 }
             }

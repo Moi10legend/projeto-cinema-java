@@ -86,7 +86,7 @@ public class Persistencia {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] partes = linha.split(";", -1);
-                if (partes.length >= 9) {
+                if (partes.length == 9) {
                     int userId = Integer.parseInt(partes[0]);
                     String cpf = partes[1];
                     String senha = partes[2];
@@ -99,6 +99,20 @@ public class Persistencia {
 
                     Usuario usuario = new Usuario(userId, cpf, senha, idade, genero, email, nomeDoCartao, numeroDoCartao, codigoSegurancaCartao);
                     usuarios.add(usuario);
+                }else{
+                    int userId = Integer.parseInt(partes[0]);
+                    String cpf = partes[1];
+                    String senha = partes[2];
+                    int idade = Integer.parseInt(partes[3]);
+                    Genero genero = Genero.valueOf(partes[4]);
+                    String email = partes[5];
+                    String nomeDoCartao = partes[6];
+                    String numeroDoCartao = partes[7];
+                    String codigoSegurancaCartao = partes[8];
+                    String origem = partes[9];
+
+                    Usuario critico = new Critico(userId, cpf, senha, idade, genero, email, nomeDoCartao, numeroDoCartao, codigoSegurancaCartao, origem);
+                    usuarios.add(critico);
                 }
             }
         } catch (IOException e) {

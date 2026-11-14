@@ -6,14 +6,14 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
-            "projectName": "projeto-cinema-java_d8abea7a"
+            "projectName": "projeto-cinema-java_2315ea99"
         },
         {
             "type": "java",
             "name": "Executar Cinema (JavaFX)",
             "request": "launch",
             "mainClass": "Main",
-            "projectName": "projeto-cinema-java_d8abea7a",
+            "projectName": "projeto-cinema-java_2315ea99",
             "vmArgs": "--module-path \"C:/javafx-sdk-27.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
