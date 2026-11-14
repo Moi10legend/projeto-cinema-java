@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
 
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaSessoesController">
@@ -20,6 +22,17 @@
         <padding>
             <Insets top="10" right="0" bottom="10" left="0"/>
         </padding>
+    </VBox>
+
+    <!-- Área de Inserção de Críticas -->
+    <VBox spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 15; -fx-border-radius: 5; -fx-border-color: #ccc;">
+        <Label text="Espaço do Crítico" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+        <HBox spacing="10">
+            <TextField fx:id="campoOrigem" promptText="Sua origem (Ex: Omelete)" prefWidth="160"/>
+            <TextField fx:id="campoCritica" promptText="Escreva sua crítica sobre o filme..." HBox.hgrow="ALWAYS"/>
+            <Button text="Enviar Crítica" onAction="#enviarCritica" style="-fx-background-color: #333; -fx-text-fill: white;"/>
+        </HBox>
+        <Label fx:id="statusCriticaLabel" text=" "/>
     </VBox>
     
     <!-- Botão para voltar à tela anterior -->

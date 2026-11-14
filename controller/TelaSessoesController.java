@@ -12,10 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Administrador;
+import model.Critico;
 import model.Filme;
 import model.Sala;
 import model.Sessao;
@@ -29,6 +31,10 @@ public class TelaSessoesController {
     
     @FXML 
     private VBox containerSalas;
+
+    @FXML private TextField campoOrigem;
+    @FXML private TextField campoCritica;
+    @FXML private Label statusCriticaLabel;
 
     // Guarda o filme que o cliente escolheu
     private Filme filmeAtual;
@@ -129,6 +135,39 @@ public class TelaSessoesController {
             stage.setScene(new Scene(root, 800, 600));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void enviarCritica(ActionEvent event) {
+        String origem = campoOrigem.getText().trim();
+        String mensagem = campoCritica.getText().trim();
+
+        if (origem.isEmpty() || mensagem.isEmpty()) {
+            statusCriticaLabel.setText("Preencha a origem e a crítica.");
+            statusCriticaLabel.setStyle("-fx-text-fill: #ff9800;"); // Laranja para aviso
+            return;
+        }
+
+        // Busca o crítico pela origem usando o Administrador
+        Critico critico = Administrador.getInstance().buscarCriticoPorOrigem(origem);
+
+        if (critico == null) {
+            statusCriticaLabel.setText("Crítico não encontrado");
+            statusCriticaLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            // Usa o método que você já criou para instanciar a Critica e salvar no Filme
+            critico.atribuirCritica(mensagem, filmeAtual);
+            
+            statusCriticaLabel.setText("Crítica adicionada com sucesso");
+            statusCriticaLabel.setStyle("-fx-text-fill: green;");
+            
+            // Limpa os campos após o envio
+            campoOrigem.clear();
+            campoCritica.clear();
+            
+            // Opcional: imprimir no console para confirmar que entrou no array
+            System.out.println("Críticas atuais do filme: " + filmeAtual.getCriticas()[0].getMensagem());
         }
     }
 }

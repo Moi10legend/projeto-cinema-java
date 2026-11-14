@@ -165,4 +165,17 @@ public class Administrador extends Base implements GerenciaDeFilmes{
         }
         return null; // Retorna null se o filme não for encontrado
     }
+
+    public Critico buscarCriticoPorOrigem(String origem) {
+        for (Usuario u : listaUsuarios) {
+            // Verifica se o usuário atual do loop é da classe Critico
+            if (u instanceof Critico) {
+                Critico c = (Critico) u;
+                if (c.getOrigem().equalsIgnoreCase(origem)) {
+                    return c; // Retorna o crítico encontrado
+                }
+            }
+        }
+        return null; // Não encontrou nenhum crítico com essa origem
+    }
 }
