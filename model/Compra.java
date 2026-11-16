@@ -280,5 +280,29 @@ public class Compra {
         }
     }
 
+    public void gerarBilhetes() {
+    // Limpa posições anteriores por segurança
+        for (int i = 0; i < this.bilhetes.length; i++) {
+            this.bilhetes[i] = null;
+        }
+
+        Sala salaDaSessao = Administrador.getInstance().buscarSalaPorNumero(this.sessao.getNumeroSala());
+
+        for (int i = 0; i < this.cadeiras.size() && i < this.bilhetes.length; i++) {
+            Cadeira c = this.cadeiras.get(i);
+            this.bilhetes[i] = new Bilhete(
+                String.valueOf(this.cliente.getUserId()),
+                this.cliente.getCpf(),
+                salaDaSessao,
+                this.sessao,
+                this.sessao.getFilme(),
+                c.getFileiraENumero()
+            );
+        }
+    }
+
+    public Bilhete[] getBilhetes() {
+        return this.bilhetes;
+    }
     
 }

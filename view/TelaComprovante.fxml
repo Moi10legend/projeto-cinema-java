@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaComprovanteController">
+    <padding><Insets top="25" right="30" bottom="25" left="30"/></padding>
+
+    <Label text="Compra Confirmada!" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e7d32;"/>
+    <Label text="Confira abaixo os seus bilhetes e itens adquiridos:" style="-fx-font-size: 14px; -fx-text-fill: #555555;"/>
+
+    <TextArea fx:id="areaComprovante" editable="false" wrapText="true" prefWidth="520" prefHeight="340" style="-fx-font-family: 'Consolas', monospace; -fx-font-size: 13px;"/>
+
+    <Button text="Voltar para o Início" onAction="#voltarInicio" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-size: 15px; -fx-padding: 10 25; -fx-cursor: hand;"/>
+</VBox>

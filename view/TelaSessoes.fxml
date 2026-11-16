@@ -15,6 +15,7 @@
     <!-- Elementos que receberão os dados injetados pelo Controller -->
     <Label fx:id="tituloFilmeLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
     <Label fx:id="detalhesFilmeLabel" style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
+    <Button text="Ver Críticas e Avaliações" onAction="#abrirTelaCriticas" style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
     
     <Label text="Escolha um horário:" style="-fx-font-size: 18px; -fx-padding: 20 0 10 0;"/>
     
@@ -28,9 +29,10 @@
     <VBox spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 15; -fx-border-radius: 5; -fx-border-color: #ccc;">
         <Label text="Espaço do Crítico" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
         <HBox spacing="10">
-            <TextField fx:id="campoOrigem" promptText="Sua origem (Ex: Omelete)" prefWidth="160"/>
+            <TextField fx:id="campoOrigem" promptText="Origem (Ex: Omelete)" prefWidth="140"/>
+            <TextField fx:id="campoNota" promptText="Nota (0 a 10)" prefWidth="95"/>
             <TextField fx:id="campoCritica" promptText="Escreva sua crítica sobre o filme..." HBox.hgrow="ALWAYS"/>
-            <Button text="Enviar Crítica" onAction="#enviarCritica" style="-fx-background-color: #333; -fx-text-fill: white;"/>
+            <Button text="Enviar Crítica" onAction="#enviarCritica" style="-fx-background-color: #333; -fx-text-fill: white; -fx-cursor: hand;"/>
         </HBox>
         <Label fx:id="statusCriticaLabel" text=" "/>
     </VBox>

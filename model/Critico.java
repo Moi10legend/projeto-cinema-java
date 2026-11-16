@@ -21,8 +21,15 @@ public class Critico extends Usuario{
         filme.setQuantidade_criticos(filme.getQuantidade_criticos()+1);
     }
 
-    public void atribuirCritica(String critica, Filme filme){
-        Critica novaCritica = new Critica(this.getNomeDoCartao(), this.origem, critica);
+    public void atribuirCritica(String mensagem, double nota, Filme filme) {
+        Critica novaCritica = new Critica(this.getNomeDoCartao(), this.origem, mensagem, nota);
         filme.adicionarCritica(novaCritica);
+
+        int qtdAtual = filme.getQuantidade_criticos();
+        double somaNotasAnteriores = filme.getNota() * qtdAtual;
+        double novaMedia = (somaNotasAnteriores + nota) / (qtdAtual + 1);
+
+        filme.setNota(novaMedia);
+        filme.setQuantidade_criticos(qtdAtual + 1);
     }
 }

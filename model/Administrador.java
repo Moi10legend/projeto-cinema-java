@@ -186,4 +186,13 @@ public class Administrador extends Base implements GerenciaDeFilmes{
         }
         return null; // Não encontrou nenhum crítico com essa origem
     }
+
+    public Sala buscarSalaPorNumero(int numeroSala) {
+        for (Sala s : listaSalas) {
+            if (s.getNumeroSala() == numeroSala) {
+                return s;
+            }
+        }
+        return null;
+    }
 }

@@ -22,6 +22,8 @@ import model.Filme;
 import model.Sala;
 import model.Sessao;
 
+
+
 public class TelaSessoesController {
     @FXML
     private Label tituloFilmeLabel;
@@ -34,6 +36,7 @@ public class TelaSessoesController {
 
     @FXML private TextField campoOrigem;
     @FXML private TextField campoCritica;
+    @FXML private TextField campoNota;
     @FXML private Label statusCriticaLabel;
 
     // Guarda o filme que o cliente escolheu
@@ -138,41 +141,76 @@ public class TelaSessoesController {
         }
     }
 
+    private void atualizarDetalhesFilme() {
+        String textoNota = filmeAtual.getQuantidade_criticos() > 0
+            ? String.format("%.1f/10 (%d críticas)", filmeAtual.getNota(), filmeAtual.getQuantidade_criticos())
+            : "Sem avaliações";
+
+        detalhesFilmeLabel.setText(
+            "Duração: " + filmeAtual.getDuracao() + " min | Base: R$ " +
+            String.format("%.2f", filmeAtual.getValor()) + " | Nota: " + textoNota
+        );
+    }
+
     @FXML
     public void enviarCritica(ActionEvent event) {
         String origem = campoOrigem.getText().trim();
+        String notaTexto = campoNota.getText().trim().replace(",", ".");
         String mensagem = campoCritica.getText().trim();
 
-        if (origem.isEmpty() || mensagem.isEmpty()) {
-            statusCriticaLabel.setText("Preencha a origem e a crítica.");
-            statusCriticaLabel.setStyle("-fx-text-fill: #ff9800;"); // Laranja para aviso
+        if (origem.isEmpty() || notaTexto.isEmpty() || mensagem.isEmpty()) {
+            statusCriticaLabel.setText("Preencha a origem, a nota e a crítica.");
+            statusCriticaLabel.setStyle("-fx-text-fill: #ff9800;");
             return;
         }
 
-        // Busca o crítico pela origem usando o Administrador
+        double nota;
+        try {
+            nota = Double.parseDouble(notaTexto);
+            if (nota < 0.0 || nota > 10.0) {
+                statusCriticaLabel.setText("A nota deve estar entre 0 e 10.");
+                statusCriticaLabel.setStyle("-fx-text-fill: #ff9800;");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            statusCriticaLabel.setText("Digite um valor numérico válido para a nota.");
+            statusCriticaLabel.setStyle("-fx-text-fill: #ff9800;");
+            return;
+        }
+
         Critico critico = Administrador.getInstance().buscarCriticoPorOrigem(origem);
 
         if (critico == null) {
             statusCriticaLabel.setText("Crítico não encontrado");
             statusCriticaLabel.setStyle("-fx-text-fill: red;");
         } else {
-            // Usa o método que você já criou para instanciar a Critica e salvar no Filme
-            critico.atribuirCritica(mensagem, filmeAtual);
-            
+            critico.atribuirCritica(mensagem, nota, filmeAtual);
+            atualizarDetalhesFilme();
+
             statusCriticaLabel.setText("Crítica adicionada com sucesso");
             statusCriticaLabel.setStyle("-fx-text-fill: green;");
-            
-            // Limpa os campos após o envio
+
             campoOrigem.clear();
+            campoNota.clear();
             campoCritica.clear();
-            
-            // Opcional: imprimir no console para confirmar que entrou no array
-            System.out.println("Críticas atuais do filme: ");
-            Critica[] criticas = filmeAtual.getCriticas();
-            for(Critica critica: criticas){
-                if(critica != null) System.out.println(critica.getMensagem());
-            
-            }
+        }
+    }
+
+    @FXML
+    public void abrirTelaCriticas(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TelaCriticas.fxml"));
+            Parent root = loader.load();
+
+            TelaCriticasController controller = loader.getController();
+            controller.setFilme(filmeAtual);
+
+            Stage stage = (Stage) containerSalas.getScene().getWindow();
+            stage.setTitle("Cinema - Críticas: " + filmeAtual.getNome());
+            stage.setScene(new Scene(root, 800, 600));
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir tela de críticas: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

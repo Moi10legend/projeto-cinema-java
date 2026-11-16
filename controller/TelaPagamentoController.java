@@ -94,28 +94,39 @@ public class TelaPagamentoController {
             return;
         }
         
-        // Valida se os dados do cartão batem com o cadastro no usuarios.txt
         if (!campoCartaoNum.getText().equals(usuarioLogado.getnumeroDoCartao()) || 
             !campoCartaoCVV.getText().equals(usuarioLogado.getCodigoSegurancaCartao())) {
             mostrarAlerta("Erro", "Dados do cartão incorretos ou não pertencem a este usuário.");
             return;
         }
 
-        // Sucesso! Aqui você atualiza as cadeiras para ocupadas (true) e gera os objetos Bilhete
+        // Ocupa as cadeiras definitivamente na sessão
         for (Cadeira c : compraAtual.getCadeiras()) {
-            c.switchIsOcupada(); 
+            c.switchIsOcupada();
         }
-        
-        mostrarAlerta("Sucesso", "Compra finalizada! Bom filme.");
+
+        // Recalcula o valor exato para enviar ao comprovante
+        EstrategiaPreco estrategia = new PrecoInteira();
+        String tipoSelecionado = comboTipoIngresso.getValue();
+        if (tipoSelecionado != null) {
+            if (tipoSelecionado.contains("Estudante")) estrategia = new PrecoEstudante();
+            else if (tipoSelecionado.contains("Crítico")) estrategia = new PrecoCritico();
+        }
+        double valorFinal = compraAtual.calcularTotalDaCompra(estrategia, cupomAplicado);
+
+        // Navega para a tela de comprovante
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TelaInicial.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TelaComprovante.fxml"));
             Parent root = loader.load();
 
+            TelaComprovanteController controller = loader.getController();
+            controller.setDadosComprovante(compraAtual, tipoSelecionado, valorFinal);
+
             Stage stage = (Stage) totalLabel.getScene().getWindow();
-            stage.setTitle("Capivara records");
+            stage.setTitle("Capivara records - Comprovante");
             stage.setScene(new Scene(root, 800, 600));
         } catch (IOException e) {
-            System.err.println("Erro ao voltar para a tela inicial: " + e.getMessage());
+            System.err.println("Erro ao carregar a tela de comprovante: " + e.getMessage());
             e.printStackTrace();
         }
     }
